@@ -486,25 +486,56 @@ main .card:nth-child(4) {
     cursor: help;
 }
 
+/* Tooltip box */
 .has-tooltip::after {
     content: attr(data-tooltip);
     position: absolute;
-    bottom: 130%;
+    bottom: calc(100% + 10px);
     left: 0;
+
     background: #1f2a1f;
     color: #fff;
-    padding: 8px 10px;
-    font-size: 0.8rem;
-    border-radius: 6px;
-    white-space: nowrap;
+
+    padding: 10px 12px;
+    font-size: 0.82rem;
+    line-height: 1.4;
+
+    border-radius: 8px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+
+    width: max-content;
+    max-width: 260px;
+    white-space: normal;
+
     opacity: 0;
     transform: translateY(6px);
-    transition: 0.2s ease;
+    transition: opacity 0.18s ease, transform 0.18s ease;
+
     pointer-events: none;
-    z-index: 10;
+    z-index: 100;
 }
 
-.has-tooltip:hover::after {
+/* Small arrow */
+.has-tooltip::before {
+    content: "";
+    position: absolute;
+    bottom: calc(100% + 4px);
+    left: 12px;
+
+    border-width: 6px;
+    border-style: solid;
+    border-color: #1f2a1f transparent transparent transparent;
+
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.18s ease, transform 0.18s ease;
+
+    z-index: 101;
+}
+
+/* Hover state */
+.has-tooltip:hover::after,
+.has-tooltip:hover::before {
     opacity: 1;
     transform: translateY(0);
 }
