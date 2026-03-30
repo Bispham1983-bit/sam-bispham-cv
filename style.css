@@ -79,7 +79,11 @@ a:hover {
     background: var(--card);
     color: var(--text);
     font-weight: 700;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease;
     cursor: pointer;
     text-decoration: none;
 }
@@ -190,7 +194,9 @@ h1 {
     border-radius: var(--radius);
     padding: 22px;
     margin-bottom: 24px;
-    transition: transform 0.22s ease, box-shadow 0.22s ease;
+    transition:
+        transform 0.22s ease,
+        box-shadow 0.22s ease;
     animation: fadeUp 0.8s ease both;
 }
 
@@ -313,7 +319,9 @@ main .card:nth-child(4) {
     padding: 8px 12px;
     font-size: 0.9rem;
     font-weight: 600;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .tag:hover {
@@ -471,4 +479,10 @@ main .card:nth-child(4) {
         animation: none;
         transform: none;
     }
+
+    .has-tooltip {
+        position: relative;
+        cursor: help;
+    }
+    
 }
