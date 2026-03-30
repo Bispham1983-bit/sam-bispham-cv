@@ -481,8 +481,11 @@ main .card:nth-child(4) {
     }
 }
 
-.has-tooltip {
+.skill-item {
     position: relative;
+}
+
+.has-tooltip {
     cursor: help;
 }
 
@@ -509,13 +512,15 @@ main .card:nth-child(4) {
 
     opacity: 0;
     transform: translateY(6px);
-    transition: opacity 0.18s ease, transform 0.18s ease;
+    transition:
+        opacity 0.18s ease,
+        transform 0.18s ease;
 
     pointer-events: none;
     z-index: 100;
 }
 
-/* Small arrow */
+/* Arrow */
 .has-tooltip::before {
     content: "";
     position: absolute;
@@ -528,14 +533,16 @@ main .card:nth-child(4) {
 
     opacity: 0;
     transform: translateY(6px);
-    transition: opacity 0.18s ease, transform 0.18s ease;
+    transition:
+        opacity 0.18s ease,
+        transform 0.18s ease;
 
     z-index: 101;
 }
 
-/* Hover state */
-.has-tooltip:hover::after,
-.has-tooltip:hover::before {
+/* Trigger on whole item */
+.skill-item:hover::after,
+.skill-item:hover::before {
     opacity: 1;
     transform: translateY(0);
 }
