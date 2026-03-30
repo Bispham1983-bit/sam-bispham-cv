@@ -200,6 +200,10 @@ h1 {
     animation: fadeUp 0.8s ease both;
 }
 
+aside {
+    z-index: 100;
+}
+
 aside .card:nth-child(1) {
     animation-delay: 0.05s;
 }
@@ -487,8 +491,11 @@ main .card:nth-child(4) {
 
 .has-tooltip {
     position: relative;
-    display: inline-flex;
     cursor: help;
+}
+
+.tag.has-tooltip {
+    display: inline-flex;
 }
 
 /* Tooltip box */
