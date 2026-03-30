@@ -1,14 +1,660 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Sam Bispham</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sam Bispham | WordPress Developer</title>
+    <meta name="description"
+        content="Sam Bispham. WordPress developer with experience in custom builds, front end development, technical SEO and client delivery." />
+    <style>
+        :root {
+            --bg: #f4f7fb;
+            --card: #ffffff;
+            --text: #1c2430;
+            --muted: #5e6b7a;
+            --accent: #2f6fed;
+            --accent-soft: #dbe7ff;
+            --border: #dfe6ee;
+            --shadow: 0 18px 45px rgba(18, 32, 56, 0.08);
+            --radius: 20px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behaviour: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, Arial, Helvetica, sans-serif;
+            background: linear-gradient(180deg, #eef4fb 0%, #f8fafc 100%);
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .page {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 32px 20px 60px;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .brand {
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            color: var(--muted);
+            text-transform: uppercase;
+        }
+
+        .top-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 46px;
+            padding: 0 18px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            background: var(--card);
+            color: var(--text);
+            font-weight: 700;
+            transition: 0.2s ease;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 24px rgba(18, 32, 56, 0.08);
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #fff;
+        }
+
+        .hero {
+            background: var(--card);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            box-shadow: var(--shadow);
+            border-radius: 28px;
+            padding: 28px;
+            margin-bottom: 24px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .avatar-wrap {
+            width: 140px;
+            height: 140px;
+            border-radius: 24px;
+            overflow: hidden;
+            background: #dce6f7;
+            border: 1px solid var(--border);
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+        }
+
+        .avatar-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            padding: 6px 10px;
+            background: var(--accent-soft);
+            color: var(--accent);
+            border-radius: 999px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        h1 {
+            margin: 0 0 8px;
+            font-size: clamp(2rem, 4vw, 3.3rem);
+            line-height: 1.05;
+        }
+
+        .subtitle {
+            font-size: 1.15rem;
+            color: var(--muted);
+            margin-bottom: 14px;
+            font-weight: 600;
+        }
+
+        .intro {
+            max-width: 850px;
+            color: var(--text);
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        .hero-links {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-top: 16px;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 24px;
+            align-items: start;
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            box-shadow: var(--shadow);
+            border-radius: var(--radius);
+            padding: 22px;
+            margin-bottom: 24px;
+        }
+
+        .card h2 {
+            margin: 0 0 16px;
+            font-size: 1.05rem;
+            letter-spacing: 0.02em;
+        }
+
+        .contact-list,
+        .meta-list,
+        .skill-list,
+        .project-list {
+            display: grid;
+            gap: 14px;
+        }
+
+        .contact-item strong,
+        .meta-item strong {
+            display: block;
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--muted);
+            margin-bottom: 4px;
+        }
+
+        .contact-item span,
+        .meta-item span,
+        .contact-item a {
+            font-size: 0.98rem;
+            color: var(--text);
+            word-break: break-word;
+        }
+
+        .skill-item {
+            display: grid;
+            gap: 8px;
+        }
+
+        .skill-head {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            font-size: 0.96rem;
+            font-weight: 600;
+        }
+
+        .skill-head span:last-child {
+            color: var(--muted);
+            font-weight: 700;
+        }
+
+        .bar {
+            height: 10px;
+            background: #e8eef7;
+            border-radius: 999px;
+            overflow: hidden;
+        }
+
+        .bar>span {
+            display: block;
+            height: 100%;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #2f6fed 0%, #5b8cff 100%);
+        }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            background: #f1f5fb;
+            color: #304154;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 8px 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .timeline {
+            display: grid;
+            gap: 18px;
+        }
+
+        .role {
+            padding-bottom: 18px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .role:last-child {
+            padding-bottom: 0;
+            border-bottom: 0;
+        }
+
+        .role-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+
+        .role-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            margin: 0;
+        }
+
+        .role-company {
+            color: var(--muted);
+            font-weight: 600;
+            margin-top: 3px;
+        }
+
+        .role-date {
+            color: var(--muted);
+            font-size: 0.95rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .role ul {
+            margin: 12px 0 0 18px;
+            padding: 0;
+        }
+
+        .role li {
+            margin-bottom: 8px;
+        }
+
+        .project {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .project:first-child {
+            padding-top: 0;
+        }
+
+        .project:last-child {
+            border-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .project h3 {
+            margin: 0 0 6px;
+            font-size: 1rem;
+        }
+
+        .project p {
+            margin: 0;
+            color: var(--muted);
+        }
+
+        .footer {
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.92rem;
+            margin-top: 12px;
+        }
+
+        @media (max-width: 900px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .avatar-wrap {
+                width: 120px;
+                height: 120px;
+            }
+        }
+
+        @media print {
+            body {
+                background: #fff;
+            }
+
+            .topbar,
+            .btn-contact,
+            .footer {
+                display: none;
+            }
+
+            .page {
+                max-width: 100%;
+                padding: 0;
+            }
+
+            .hero,
+            .card {
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Sam Bispham</h1>
-    <p>WordPress Developer</p>
-    <p>This is some info about Sam Bispham.</p>
+    <div class="page">
+        <div class="topbar">
+            <div class="brand">sam.bispham.uk</div>
+            <div class="top-actions">
+                <a class="btn" href="#contact">Contact</a>
+                <a class="btn btn-primary" href="/sam-bispham-cv.pdf" download>Download PDF</a>
+            </div>
+        </div>
+
+        <section class="hero">
+            <div class="hero-grid">
+                <div class="avatar-wrap">
+                    <img src="/images/sam.jpg" alt="Sam Bispham" />
+                </div>
+
+                <div>
+                    <div class="eyebrow">WordPress Developer</div>
+                    <h1>Sam Bispham</h1>
+                    <div class="subtitle">Custom WordPress builds, front end development, technical SEO and client
+                        delivery</div>
+                    <p class="intro">
+                        I build and maintain WordPress websites from concept to launch, with a background that combines
+                        development, SEO, content strategy and client management. I work across custom builds, ongoing
+                        improvements, bug fixing and performance-focused updates, with strong experience delivering
+                        practical solutions in agency environments.
+                    </p>
+
+                    <div class="hero-links">
+                        <span>Birmingham, UK</span>
+                        <span>Available for permanent roles</span>
+                        <a href="mailto:sam@sambispham.com">sam@sambispham.com</a>
+                        <a href="https://www.linkedin.com/in/your-linkedin/" target="_blank"
+                            rel="noreferrer">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="layout">
+            <aside>
+                <section class="card" id="contact">
+                    <h2>Contact</h2>
+                    <div class="contact-list">
+                        <div class="contact-item">
+                            <strong>Email</strong>
+                            <a href="mailto:you@example.com">you@example.com</a>
+                        </div>
+                        <div class="contact-item">
+                            <strong>Phone</strong>
+                            <span>07xxx xxx xxx</span>
+                        </div>
+                        <div class="contact-item">
+                            <strong>Location</strong>
+                            <span>Birmingham, UK</span>
+                        </div>
+                        <div class="contact-item">
+                            <strong>Website</strong>
+                            <a href="https://sam.bispham.uk" target="_blank" rel="noreferrer">sam.bispham.uk</a>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="card">
+                    <h2>Core skills</h2>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <div class="skill-head">
+                                <span>WordPress</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="bar"><span style="width: 90%"></span></div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-head">
+                                <span>PHP</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="bar"><span style="width: 80%"></span></div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-head">
+                                <span>HTML / CSS</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="bar"><span style="width: 95%"></span></div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-head">
+                                <span>JavaScript</span>
+                                <span>72%</span>
+                            </div>
+                            <div class="bar"><span style="width: 72%"></span></div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-head">
+                                <span>Technical SEO</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="bar"><span style="width: 85%"></span></div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-head">
+                                <span>Client management</span>
+                                <span>82%</span>
+                            </div>
+                            <div class="bar"><span style="width: 82%"></span></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="card">
+                    <h2>Tools and areas</h2>
+                    <div class="tag-list">
+                        <span class="tag">ACF</span>
+                        <span class="tag">Custom themes</span>
+                        <span class="tag">WordPress hooks</span>
+                        <span class="tag">Responsive UI</span>
+                        <span class="tag">Bug fixing</span>
+                        <span class="tag">Site audits</span>
+                        <span class="tag">Google Ads</span>
+                        <span class="tag">Content structure</span>
+                        <span class="tag">Performance improvements</span>
+                    </div>
+                </section>
+
+                <section class="card">
+                    <h2>Quick profile</h2>
+                    <div class="meta-list">
+                        <div class="meta-item">
+                            <strong>Experience</strong>
+                            <span>13+ years</span>
+                        </div>
+                        <div class="meta-item">
+                            <strong>Full site builds</strong>
+                            <span>15+</span>
+                        </div>
+                        <div class="meta-item">
+                            <strong>Best fit roles</strong>
+                            <span>Senior WordPress Developer, Senior Web Developer, Web Developer</span>
+                        </div>
+                    </div>
+                </section>
+            </aside>
+
+            <main>
+                <section class="card">
+                    <h2>Professional experience</h2>
+                    <div class="timeline">
+                        <article class="role">
+                            <div class="role-top">
+                                <div>
+                                    <h3 class="role-title">Web Developer / Online Marketing Manager</h3>
+                                    <div class="role-company">Ballyhoo</div>
+                                </div>
+                                <div class="role-date">[Month Year] to Present</div>
+                            </div>
+
+                            <ul>
+                                <li>Build and deliver WordPress websites from initial brief through to launch.</li>
+                                <li>Develop custom functionality using PHP, ACF and WordPress hooks.</li>
+                                <li>Maintain retained client sites, fix bugs, improve layouts and add functionality.
+                                </li>
+                                <li>Diagnose issues across front end, WordPress admin and hosting environments.</li>
+                                <li>Improve structure, performance and usability across live client websites.</li>
+                                <li>Previously led on SEO work including audits, content planning, keyword research and
+                                    Google Ads account management.</li>
+                                <li>Managed client relationships, onboarding and project discussions, including quoting
+                                    and recommending improvements.</li>
+                            </ul>
+                        </article>
+
+                        <article class="role">
+                            <div class="role-top">
+                                <div>
+                                    <h3 class="role-title">Team Leader</h3>
+                                    <div class="role-company">Mitchells &amp; Butlers, Stonehouse</div>
+                                </div>
+                                <div class="role-date">[Month Year] to [Month Year]</div>
+                            </div>
+
+                            <ul>
+                                <li>Handled day to day pub operations including stock control, ordering, deliveries and
+                                    cellar management.</li>
+                                <li>Ran the pub independently during manager holidays and absences.</li>
+                                <li>Provided management cover across other pubs in the group.</li>
+                                <li>Built strong operational, leadership and problem-solving skills in a fast-paced
+                                    environment.</li>
+                            </ul>
+                        </article>
+                    </div>
+                </section>
+
+                <section class="card">
+                    <h2>Selected strengths</h2>
+                    <div class="project-list">
+                        <div class="project">
+                            <h3>Custom WordPress builds</h3>
+                            <p>I create structured, maintainable sites with custom templates, flexible content and
+                                practical admin setups.</p>
+                        </div>
+                        <div class="project">
+                            <h3>Reliable front end development</h3>
+                            <p>I work confidently across layout, styling, responsiveness and user-focused improvements.
+                            </p>
+                        </div>
+                        <div class="project">
+                            <h3>Technical SEO understanding</h3>
+                            <p>I bring SEO knowledge into build decisions, content structure and site improvements
+                                rather than treating it as an afterthought.</p>
+                        </div>
+                        <div class="project">
+                            <h3>Client-facing delivery</h3>
+                            <p>I understand requirements, explain recommendations clearly and keep work grounded in
+                                practical outcomes.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="card">
+                    <h2>Selected projects</h2>
+                    <div class="project-list">
+                        <div class="project">
+                            <h3>Project name or client site</h3>
+                            <p>Short summary of what the site was, what you built and the outcome. Example: custom
+                                WordPress build with flexible page components and improved content structure.</p>
+                        </div>
+
+                        <div class="project">
+                            <h3>Project name or client site</h3>
+                            <p>Short summary of the challenge, your role and what you improved. Example: ongoing
+                                retained development, bug fixing and performance-focused front end updates.</p>
+                        </div>
+
+                        <div class="project">
+                            <h3>Project name or client site</h3>
+                            <p>Short summary of the work. Example: SEO-led rebuild with cleaner structure, better
+                                internal linking and a more usable admin experience.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="card">
+                    <h2>What I’m looking for</h2>
+                    <p>
+                        I’m looking for a WordPress development role where I can bring together custom build experience,
+                        front end problem solving, technical SEO knowledge and client-focused thinking. My best fit is a
+                        position with real ownership, varied project work and room to keep growing technically.
+                    </p>
+                </section>
+            </main>
+        </div>
+
+        <div class="footer">
+            Built by Sam Bispham.
+        </div>
+    </div>
 </body>
 
 </html>
