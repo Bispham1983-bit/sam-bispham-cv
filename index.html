@@ -14,16 +14,14 @@
             --text: #1f2a1f;
             --muted: #5f6d5f;
 
-            --accent: #7fa36a;
-            /* main green */
+            --accent: #5f7f4f;
+            /* darker green */
+            --accent-light: #c4d6b0;
+            /* your original */
             --accent-soft: #e8f1e2;
-            /* soft background */
-            --accent-strong: #5f7f4f;
-            /* darker green for hover */
 
             --border: #dfe6dc;
             --shadow: 0 18px 45px rgba(50, 70, 50, 0.08);
-            --radius: 20px;
         }
 
         * {
@@ -43,7 +41,8 @@
         }
 
         a {
-            color: var(--accent);
+            color: #3f5e35;
+            font-weight: 600;
             text-decoration: none;
         }
 
@@ -105,12 +104,12 @@
         .btn-primary {
             background: var(--accent);
             border-color: var(--accent);
-            color: #fff;
+            color: #ffffff;
         }
 
         .btn-primary:hover {
-            background: var(--accent-strong);
-            border-color: var(--accent-strong);
+            background: #4e6b41;
+            border-color: #4e6b41;
         }
 
         .hero {
@@ -149,8 +148,8 @@
         .eyebrow {
             display: inline-block;
             padding: 6px 10px;
-            background: var(--accent-soft);
-            color: var(--accent);
+            background: var(--accent-light);
+            color: #2d3a2d;
             border-radius: 999px;
             font-size: 0.82rem;
             font-weight: 700;
@@ -165,7 +164,7 @@
 
         .subtitle {
             font-size: 1.15rem;
-            color: var(--muted);
+            color: #4e5d4e;
             margin-bottom: 14px;
             font-weight: 600;
         }
@@ -235,7 +234,7 @@
         .meta-item span,
         .contact-item a {
             font-size: 0.98rem;
-            color: var(--text);
+            color: #2a352a;
             word-break: break-word;
         }
 
@@ -268,7 +267,7 @@
             display: block;
             height: 100%;
             border-radius: 999px;
-            background: linear-gradient(90deg, #7fa36a 0%, #a9c79a 100%);
+            background: linear-gradient(90deg, #5f7f4f 0%, #9fbc8c 100%);
         }
 
         .tag-list {
