@@ -486,6 +486,8 @@ main .card:nth-child(4) {
 }
 
 .has-tooltip {
+    position: relative;
+    display: inline-flex;
     cursor: help;
 }
 
@@ -540,9 +542,9 @@ main .card:nth-child(4) {
     z-index: 101;
 }
 
-/* Trigger on whole item */
-.skill-item:hover::after,
-.skill-item:hover::before {
+/* Trigger on any tooltip-enabled element */
+.has-tooltip:hover::after,
+.has-tooltip:hover::before {
     opacity: 1;
     transform: translateY(0);
 }
