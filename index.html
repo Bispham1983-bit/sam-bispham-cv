@@ -91,49 +91,49 @@ sam@sambispham.com
                         <div class="skill-item">
                             <div class="skill-head">
                                 <span>WordPress</span>
-                                <span>90%</span>
+                                <span class="skill-percent" data-target="90">0%</span>
                             </div>
-                            <div class="bar"><span style="width: 90%"></span></div>
+                            <div class="bar"><span style="--target-width: 90%"></span></div>
                         </div>
 
                         <div class="skill-item">
                             <div class="skill-head">
                                 <span>PHP</span>
-                                <span>80%</span>
+                                <span class="skill-percent" data-target="80">0%</span>
                             </div>
-                            <div class="bar"><span style="width: 80%"></span></div>
+                            <div class="bar"><span style="--target-width: 80%"></span></div>
                         </div>
 
                         <div class="skill-item">
                             <div class="skill-head">
                                 <span>HTML / CSS</span>
-                                <span>95%</span>
+                                <span class="skill-percent" data-target="95">0%</span>
                             </div>
-                            <div class="bar"><span style="width: 95%"></span></div>
+                            <div class="bar"><span style="--target-width: 95%"></span></div>
                         </div>
 
                         <div class="skill-item">
                             <div class="skill-head">
                                 <span>JavaScript</span>
-                                <span>72%</span>
+                                <span class="skill-percent" data-target="72">0%</span>
                             </div>
-                            <div class="bar"><span style="width: 72%"></span></div>
+                            <div class="bar"><span style="--target-width: 72%"></span></div>
                         </div>
 
                         <div class="skill-item">
                             <div class="skill-head">
                                 <span>Technical SEO</span>
-                                <span>85%</span>
+                                <span class="skill-percent" data-target="85">0%</span>
                             </div>
-                            <div class="bar"><span style="width: 85%"></span></div>
+                            <div class="bar"><span style="--target-width: 85%"></span></div>
                         </div>
 
                         <div class="skill-item">
                             <div class="skill-head">
                                 <span>Client management</span>
-                                <span>82%</span>
+                                <span class="skill-percent" data-target="82">0%</span>
                             </div>
-                            <div class="bar"><span style="width: 82%"></span></div>
+                            <div class="bar"><span style="--target-width: 82%"></span></div>
                         </div>
                     </div>
                 </section>
@@ -284,13 +284,63 @@ sam@sambispham.com
             Built by Sam Bispham.
         </div>
     </div>
+
+    <script>
+        console.log(
+            "%cHi 👋\nBuilt to be fast, simple and accessible.\n\nQuestions or feedback:\nsam@sambispham.com",
+            "color: #5f7f4f; font-size: 14px;"
+        );
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const skillList = document.querySelector(".skill-list");
+            const skillItems = document.querySelectorAll(".skill-item");
+            let hasAnimated = false;
+
+            const animateSkills = () => {
+                if (hasAnimated) return;
+                hasAnimated = true;
+
+                skillItems.forEach((item, index) => {
+                    const counter = item.querySelector(".skill-percent");
+                    const bar = item.querySelector(".bar > span");
+                    const target = parseInt(counter.getAttribute("data-target"), 10);
+
+                    setTimeout(() => {
+                        bar.style.width = `var(--target-width)`;
+
+                        let current = 0;
+                        const duration = 1200;
+                        const stepTime = Math.max(16, Math.floor(duration / target));
+
+                        const timer = setInterval(() => {
+                            current += 1;
+                            counter.textContent = current + "%";
+
+                            if (current >= target) {
+                                counter.textContent = target + "%";
+                                clearInterval(timer);
+                            }
+                        }, stepTime);
+                    }, index * 100);
+                });
+            };
+
+            if ("IntersectionObserver" in window && skillList) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            animateSkills();
+                            observer.disconnect();
+                        }
+                    });
+                }, { threshold: 0.35 });
+
+                observer.observe(skillList);
+            } else {
+                animateSkills();
+            }
+        });
+    </script>
 </body>
 
 </html>
-
-<script>
-    console.log(
-        "%cHi 👋\nBuilt to be fast, simple and accessible.\n\nQuestions or feedback:\nsam@sambispham.com",
-        "color: #5f7f4f; font-size: 14px;"
-    );
-</script>
