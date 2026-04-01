@@ -191,8 +191,9 @@ h1 {
 
 .layout {
     display: grid;
-    grid-template-columns: 320px 1fr;
     gap: 24px;
+    
+    grid-template-columns: 320px 1fr;
     align-items: start;
 }
 
@@ -444,6 +445,7 @@ main .card:nth-child(4) {
 
     .layout {
         grid-template-columns: 1fr;
+        gap: 0;
     }
 
     .hero-grid {
