@@ -17,6 +17,7 @@
 
 html {
     scroll-behaviour: smooth;
+    overflow-x: clip;
 }
 
 body {
@@ -25,6 +26,13 @@ body {
     background: linear-gradient(180deg, #f0f6ec 0%, #f7faf5 100%);
     color: var(--text);
     line-height: 1.5;
+    overflow-x: clip;
+}
+
+img,
+svg,
+iframe {
+    max-width: 100%;
 }
 
 a {
@@ -42,6 +50,7 @@ a:hover {
     max-width: 1200px;
     margin: 0 auto;
     padding: 32px 20px 60px;
+    width: 100%;
 }
 
 .topbar {
@@ -429,12 +438,21 @@ main .card:nth-child(4) {
 }
 
 @media (max-width: 900px) {
+    .page {
+        padding-inline: 16px;
+    }
+
     .layout {
         grid-template-columns: 1fr;
     }
 
     .hero-grid {
         grid-template-columns: 1fr;
+    }
+
+    .hero,
+    .card {
+        padding: 20px;
     }
 
     .avatar-wrap {
